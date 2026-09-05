@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Tests/">
+    <Project Path="Tests/Shared.Tests/Shared.Tests.csproj" />
+  </Folder>
   <Project Path="Services/Services.csproj" />
   <Project Path="Shared/Shared.csproj" />
 </Solution>
