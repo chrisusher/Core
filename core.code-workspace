@@ -1,0 +1,26 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "extensions": {
+        "recommendations": [
+            "ms-dotnettools.csharp",
+            "ms-dotnettools.csdevkit"
+        ]
+    },
+    "settings": {
+        "chat.mcp.gallery.enabled": true,
+        "chat.viewSessions.enabled": true,
+        "chat.tools.terminal.autoApprove": {
+            "git rev-parse --show-toplevel": true,
+            "git status --short": true,
+            "git diff": true,
+            "dotnet --version": true,
+            "dotnet --info": true
+        },
+        "dotnet.defaultSolution": "Core.slnx",
+        "explorer.fileNesting.enabled": true
+    }
+}
