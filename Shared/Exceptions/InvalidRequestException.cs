@@ -1,9 +1,8 @@
-namespace ChrisUsher.TradingStrat.Shared.Exceptions
+namespace ChrisUsher.Core.Shared.Exceptions;
+
+public class InvalidRequestException : Exception
 {
-    public class InvalidRequestException : Exception
+    public InvalidRequestException(string message) : base(message)
     {
-        public InvalidRequestException(string message) : base(message)
-        {
-        }
     }
 }

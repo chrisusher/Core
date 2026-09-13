@@ -4,7 +4,28 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <RootNamespace>ChrisUsher.Core.Services</RootNamespace>
+    <AssemblyName>ChrisUsher.Core.Services</AssemblyName>
+    <Version>0.1.0</Version>
+    <PackageId>ChrisUsher.Core.Services</PackageId>
+    <Authors>Chris Usher</Authors>
+    <Description>Core .NET services for file storage, data retrieval, and other utility functions.</Description>
+    <Copyright>Copyright (c) Chris Usher 2026</Copyright>
+    <PackageProjectUrl>https://github.com/chrisusher/Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/chrisusher/Core.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>Initial release. Full release notes: https://github.com/chrisusher/Core/blob/main/Services/CHANGELOG.md</PackageReleaseNotes>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.25.0" />
+    <PackageReference Include="Microsoft.Extensions.Azure" Version="1.12.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.12" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Shared\Shared.csproj" />

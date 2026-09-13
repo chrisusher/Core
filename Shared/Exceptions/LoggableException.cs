@@ -1,4 +1,4 @@
-namespace ChrisUsher.TradingStrat.Shared.Exceptions;
+namespace ChrisUsher.Core.Shared.Exceptions;
 
 public class LoggableException : Exception
 {
