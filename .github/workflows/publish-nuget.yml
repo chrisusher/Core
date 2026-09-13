@@ -1,4 +1,4 @@
-name: Publish Shared to NuGet
+name: Publish Packages to NuGet
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
   id-token: write
 
 jobs:
-  publish:
+  publish-shared:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,6 +29,38 @@ jobs:
 
       - name: Pack shared project
         run: dotnet pack Shared/Shared.csproj --configuration Release --no-restore --output ./artifacts
+
+      - name: Log in to NuGet with OIDC
+        id: nuget-login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
+      - name: Publish package to NuGet
+        run: dotnet nuget push "./artifacts/*.nupkg" --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Publish symbols to NuGet
+        run: dotnet nuget push "./artifacts/*.snupkg" --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  publish-services:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore Services project dependencies
+        run: dotnet restore Services/Services.csproj
+
+      - name: Pack Services project
+        run: dotnet pack Services/Services.csproj --configuration Release --no-restore --output ./artifacts
 
       - name: Log in to NuGet with OIDC
         id: nuget-login
