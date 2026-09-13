@@ -51,13 +51,14 @@ public static class ServiceTestsCommon
             loggingBuilder.AddSerilog(Log.Logger);
         });
         
-        // Test-only: register a default (unnamed) BlobServiceClient so services that inject
-        // BlobServiceClient (without a name) resolve successfully (e.g., ExchangeDataService)
+        // Test-only: register both the default client for direct injection and the named
+        // Storage client used by storage/cache fixtures.
         services.AddAzureClients(config =>
         {
             var cs = Configuration!.GetConnectionString("Storage")
                      ?? "UseDevelopmentStorage=true";
             config.AddBlobServiceClient(cs);
+            config.AddBlobServiceClient(cs).WithName("Storage");
         });
         
         services.AddSingleton<IConfiguration>(Configuration!);

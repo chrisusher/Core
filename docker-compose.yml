@@ -7,18 +7,6 @@ services:
     - 10002:10002
     volumes:
       - azurite_data:/data
-
-  # worker:
-  #   build:
-  #     context: .
-  #     dockerfile: ./WorkerService/dockerfile
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Production
-  #   ports:
-  #     - "5000:8080"
-  #   volumes:
-  #     - worker_data:/Data
       
 volumes:
   azurite_data:
-  worker_data:
